@@ -1,84 +1,26 @@
 const { execSync, spawn } = require('child_process');
-const _supportedPlayers = [
+const { Utilities } = require('./lib/utilities');
+const { NodeAudioPlayer } = require('./lib/players')
+
+// List of supported players
+const SUPPORTED_PLAYERS = [
     'paplay',
     'mplayer'
 ];
 
 class NodeAudio {
+    /**
+     * @returns {NodeAudioPlayer}
+     */
     static getDefaultPlayer() {
-        isPlayerInstalled('');
+        console.log(Utilities.getFirstInstalled(SUPPORTED_PLAYERS));
     }
 
+    /**
+     * @returns {NodeAudioPlayer}
+     */
     static getPlayer() {
 
-    }
-}
-
-function getAvailablePlayer() {
-
-}
-
-function isPlayerInstalled(player) {
-    try {
-        execSync(`which ${player}`);
-        return false;
-    }
-    catch (e) {
-        return false;
-    }
-}
-
-let _NodeAudioPlayerOptions_loop = new WeakMap();
-class NodeAudioPlayerOptions {
-    /**
-     * @param {NodeAudioPlayerOptions} options 
-     */
-    constructor(options) {
-        options = options || {};
-        this.loop = options.loop;
-    }
-
-    /**
-     * @type {number}
-     */
-    get loop() {
-        return _NodeAudioPlayerOptions_loop.get(this);
-    }
-
-    set loop(value) {
-        _NodeAudioPlayerOptions_loop.set(this, typeof (value) == 'number' ? value : -1);
-    }
-}
-
-class NodeAudioPlayer {
-    /**
-     * @param {string} file 
-     * @param {NodeAudioPlayerOptions} options 
-     */
-    play(file, options) {
-        throw new Error('Method not implemented')
-    }
-
-    stop() {
-        throw new Error('Method not implemented')
-    }
-}
-
-class PAPlay extends NodeAudioPlayer {
-    constructor() {
-        super();
-    }
-
-    /**
-     * @param {string} file 
-     * @param {NodeAudioPlayerOptions} options 
-     */
-    play(file, options) {
-        throw new Error('Method not implemented')
-    }
-
-    stop() {
-        throw new Error('Method not implemented')
     }
 }
 
