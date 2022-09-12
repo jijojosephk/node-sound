@@ -1,11 +1,12 @@
-const { execSync, spawn } = require('child_process');
 const { Utilities } = require('./lib/utilities');
-const { NodeAudioPlayer } = require('./lib/players')
+const { NodeAudioPlayer, PAPlay } = require('./lib/players')
 
 // List of supported players
 const SUPPORTED_PLAYERS = [
-    'paplay',
-    'mplayer'
+    {
+        command: 'paplay',
+        handlerClass: PAPlay
+    }
 ];
 
 class NodeAudio {
@@ -13,7 +14,18 @@ class NodeAudio {
      * @returns {NodeAudioPlayer}
      */
     static getDefaultPlayer() {
-        console.log(Utilities.getFirstInstalled(SUPPORTED_PLAYERS));
+        const player = Utilities.getFirstInstalled(SUPPORTED_PLAYERS.map(p => {
+            return p.command;
+        }));
+
+        if (!player) {
+            throw new Error('No supported players installed in the system');
+        } else {
+            const handlerClass = SUPPORTED_PLAYERS.filter(p => {
+                return p.command === player;
+            })[0].handlerClass;
+            return new handlerClass();
+        }
     }
 
     /**
