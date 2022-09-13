@@ -1,8 +1,6 @@
 # node-sound
 
-This is a library to play audio files from nodejs applications.
-
-# Warning: This is a work in progress. Please don't use it until this line is removed.
+This is a library to play audio files from nodejs applications. This is a work in progress and may not be stable. But you can use and share your feedbacks.
 
 # Installation
 `npm install node-sound`
