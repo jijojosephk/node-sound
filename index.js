@@ -48,5 +48,6 @@ function getHandlerClass(command) {
 }
 
 module.exports = {
-	NodeSound
+	NodeSound,
+	NodeSoundPlayer
 };
