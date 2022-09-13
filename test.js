@@ -1,2 +1,2 @@
-//const { NodeAudio } = require('.');
-//const player = NodeAudio.getDefaultPlayer();
+//const { NodeSound } = require('.');
+//const player = NodeSound.getDefaultPlayer();

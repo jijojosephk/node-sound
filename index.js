@@ -1,6 +1,6 @@
 const { Utilities } = require('./lib/utilities');
 // eslint-disable-next-line no-unused-vars
-const { NodeAudioPlayer, DefaultPlayer } = require('./lib/players');
+const { NodeSoundPlayer, DefaultPlayer } = require('./lib/players');
 
 // List of supported players
 const SUPPORTED_PLAYERS = [
@@ -14,9 +14,9 @@ const SUPPORTED_PLAYERS = [
 	}
 ];
 
-class NodeAudio {
+class NodeSound {
 	/**
-	 * @returns {NodeAudioPlayer}
+	 * @returns {NodeSoundPlayer}
 	 */
 	static getDefaultPlayer() {
 		const player = Utilities.getFirstInstalled(getSupportedPlayerNames());
@@ -29,7 +29,7 @@ class NodeAudio {
 	}
 
 	/**
-	 * @returns {NodeAudioPlayer}
+	 * @returns {NodeSoundPlayer}
 	 */
 	static getPlayer() {
 	}
@@ -48,5 +48,5 @@ function getHandlerClass(command) {
 }
 
 module.exports = {
-	NodeAudio
+	NodeSound
 };

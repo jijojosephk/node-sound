@@ -1,5 +1,5 @@
 {
-  "name": "node-audio",
+  "name": "node-sound",
   "version": "0.0.1",
   "description": "A library to play audio files from nodejs applications",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jijojosephk/node-audio.git"
+    "url": "git+https://github.com/jijojosephk/node-sound.git"
   },
   "keywords": [
     "play",
@@ -19,9 +19,9 @@
   "author": "Jijo Joseph <jijojosephk@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jijojosephk/node-audio/issues"
+    "url": "https://github.com/jijojosephk/node-sound/issues"
   },
-  "homepage": "https://github.com/jijojosephk/node-audio#readme",
+  "homepage": "https://github.com/jijojosephk/node-sound#readme",
   "devDependencies": {
     "eslint": "^8.23.1"
   }
