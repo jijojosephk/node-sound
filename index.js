@@ -1,39 +1,52 @@
 const { Utilities } = require('./lib/utilities');
-const { NodeAudioPlayer, PAPlay } = require('./lib/players')
+// eslint-disable-next-line no-unused-vars
+const { NodeAudioPlayer, DefaultPlayer } = require('./lib/players');
 
 // List of supported players
 const SUPPORTED_PLAYERS = [
-    {
-        command: 'paplay',
-        handlerClass: PAPlay
-    }
+	{
+		command: 'paplay',
+		handlerClass: DefaultPlayer
+	},
+	{
+		command: 'aplay',
+		handlerClass: DefaultPlayer
+	}
 ];
 
 class NodeAudio {
-    /**
-     * @returns {NodeAudioPlayer}
-     */
-    static getDefaultPlayer() {
-        const player = Utilities.getFirstInstalled(SUPPORTED_PLAYERS.map(p => {
-            return p.command;
-        }));
+	/**
+	 * @returns {NodeAudioPlayer}
+	 */
+	static getDefaultPlayer() {
+		const player = Utilities.getFirstInstalled(getSupportedPlayerNames());
+		if (!player) {
+			throw new Error('No supported players installed in the system');
+		} else {
+			const handlerClass = getHandlerClass(player);
+			return new handlerClass(player);
+		}
+	}
 
-        if (!player) {
-            throw new Error('No supported players installed in the system');
-        } else {
-            const handlerClass = SUPPORTED_PLAYERS.filter(p => {
-                return p.command === player;
-            })[0].handlerClass;
-            return new handlerClass();
-        }
-    }
-
-    /**
-     * @returns {NodeAudioPlayer}
-     */
-    static getPlayer() {
-
-    }
+	/**
+	 * @returns {NodeAudioPlayer}
+	 */
+	static getPlayer() {
+	}
 }
 
-module.exports = { NodeAudio }
+function getSupportedPlayerNames() {
+	return SUPPORTED_PLAYERS.map(p => {
+		return p.command;
+	});
+}
+
+function getHandlerClass(command) {
+	return SUPPORTED_PLAYERS.filter(p => {
+		return p.command === command;
+	})[0].handlerClass;
+}
+
+module.exports = {
+	NodeAudio
+};

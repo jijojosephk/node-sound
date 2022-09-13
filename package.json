@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jijojosephk/node-audio/issues"
   },
-  "homepage": "https://github.com/jijojosephk/node-audio#readme"
+  "homepage": "https://github.com/jijojosephk/node-audio#readme",
+  "devDependencies": {
+    "eslint": "^8.23.1"
+  }
 }
