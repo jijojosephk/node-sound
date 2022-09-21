@@ -1,6 +1,6 @@
 {
   "name": "node-sound",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A library to play audio files from nodejs applications",
   "main": "index.js",
   "type": "commonjs",
