@@ -11,6 +11,10 @@ const SUPPORTED_PLAYERS = [
 	{
 		command: 'aplay',
 		handlerClass: DefaultPlayer
+	},
+	{
+		command: 'afplay',
+		handlerClass: DefaultPlayer
 	}
 ];
 
