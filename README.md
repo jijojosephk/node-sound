@@ -6,3 +6,12 @@ This is a library to play audio files from nodejs applications. This is a work i
 `npm install node-sound`
 or
 `yarn add node-sound`
+
+# Usage
+```js
+const { NodeSound } = require('node-sound');
+const player = NodeSound.getDefaultPlayer();
+player.play('sample.wav').then(() => {
+	// TO DO
+})
+```
