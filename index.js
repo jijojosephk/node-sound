@@ -6,14 +6,17 @@ const { NodeSoundPlayer, DefaultPlayer } = require('./lib/players');
 const SUPPORTED_PLAYERS = [
 	{
 		command: 'paplay',
+		platforms: ['linux'],
 		handlerClass: DefaultPlayer
 	},
 	{
 		command: 'aplay',
+		platforms: ['linux'],
 		handlerClass: DefaultPlayer
 	},
 	{
 		command: 'afplay',
+		platforms: ['darwin'],
 		handlerClass: DefaultPlayer
 	}
 ];
@@ -39,9 +42,21 @@ class NodeSound {
 	}
 }
 
+/**
+ * @returns {Array<string>}
+ */
 function getSupportedPlayerNames() {
-	return SUPPORTED_PLAYERS.map(p => {
+	return getSupportedPlayersForPlatform(process.platform).map(p => {
 		return p.command;
+	});
+}
+
+/**
+ * @param {string} platform 
+ */
+function getSupportedPlayersForPlatform(platform) {
+	return SUPPORTED_PLAYERS.filter(f => {
+		return f.platforms.includes(platform);
 	});
 }
 
